@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, memo } from "react";
 
 interface CardProps {
   children: ReactNode;
@@ -6,7 +6,7 @@ interface CardProps {
   className?: string;
 }
 
-export function Card({
+function CardComponent({
   children,
   variant = "default",
   className = "",
@@ -24,3 +24,5 @@ export function Card({
 
   return <div className={cardClasses}>{children}</div>;
 }
+
+export const Card = memo(CardComponent);

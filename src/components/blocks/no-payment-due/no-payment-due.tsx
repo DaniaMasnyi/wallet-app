@@ -1,9 +1,9 @@
-import React from "react";
+import React, { memo } from "react";
 import { Card } from "@/components/ui/card/card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
-export function NoPaymentDue(): React.ReactElement {
+function NoPaymentDueComponent(): React.ReactElement {
   return (
     <Card className="p-5 col-span-1 row-span-2 h-full">
       <div className="flex flex-col h-full">
@@ -12,7 +12,7 @@ export function NoPaymentDue(): React.ReactElement {
             No Payment Due
           </div>
           <div className="text-sm text-gray-500 leading-tight">
-            You've paid your September balance.
+            You&apos;ve paid your September balance.
           </div>
         </div>
         <div className="flex justify-end mt-4">
@@ -24,3 +24,5 @@ export function NoPaymentDue(): React.ReactElement {
     </Card>
   );
 }
+
+export const NoPaymentDue = memo(NoPaymentDueComponent);

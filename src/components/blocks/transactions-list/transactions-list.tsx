@@ -1,17 +1,18 @@
-import React from "react";
+import React, { memo, useMemo } from "react";
 import { TransactionItem } from "@/components/blocks/transaction-item/transaction-item";
 import { Transaction } from "@/types/wallet";
 
 interface TransactionsListProps {
   transactions: Transaction[];
-  onTransactionClick: (transaction: Transaction) => void;
 }
 
-export function TransactionsList({
+function TransactionsListComponent({
   transactions,
-  onTransactionClick,
 }: TransactionsListProps): React.ReactElement {
-  const displayTransactions = transactions.slice(0, 10);
+  const displayTransactions = useMemo(
+    () => transactions.slice(0, 10),
+    [transactions],
+  );
 
   return (
     <div>
@@ -23,13 +24,11 @@ export function TransactionsList({
 
       <div className="space-y-2">
         {displayTransactions.map((transaction) => (
-          <TransactionItem
-            key={transaction.id}
-            transaction={transaction}
-            onClick={() => onTransactionClick(transaction)}
-          />
+          <TransactionItem key={transaction.id} transaction={transaction} />
         ))}
       </div>
     </div>
   );
 }
+
+export const TransactionsList = memo(TransactionsListComponent);

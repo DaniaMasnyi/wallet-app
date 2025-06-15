@@ -1,4 +1,5 @@
-import React from "react";
+import React, { memo } from "react";
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faBullseye } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -12,7 +13,6 @@ import { Transaction } from "@/types/wallet";
 
 interface TransactionItemProps {
   transaction: Transaction;
-  onClick?: () => void;
 }
 
 function getIconComponent(iconName: string): React.ReactElement {
@@ -82,47 +82,49 @@ function getIconComponent(iconName: string): React.ReactElement {
   }
 }
 
-export function TransactionItem({
+function TransactionItemComponent({
   transaction,
-  onClick,
 }: TransactionItemProps): React.ReactElement {
   const amountDisplay = formatCurrency(transaction.amount);
+  const formattedDate = formatDate(transaction.date);
 
   return (
-    <div
-      className="p-4 bg-white rounded-2xl shadow-sm border-0 mb-2 cursor-pointer"
-      onClick={onClick}
-    >
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-4">
-          {getIconComponent(transaction.icon)}
-          <div>
-            <div className="font-semibold text-black text-base">
-              {transaction.name}
-            </div>
-            <div className="text-sm text-gray-500">
-              {transaction.pending && "Pending - "}
-              {transaction.description}
-            </div>
-            <div className="text-sm text-gray-400">
-              {transaction.authorizedUser && `${transaction.authorizedUser} - `}
-              {formatDate(transaction.date)}
+    <Link href={`/transaction/${transaction.id}`}>
+      <div className="p-4 bg-white rounded-2xl shadow-sm border-0 mb-2 cursor-pointer hover:shadow-md transition-shadow">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            {getIconComponent(transaction.icon)}
+            <div>
+              <div className="font-semibold text-black text-base">
+                {transaction.name}
+              </div>
+              <div className="text-sm text-gray-500">
+                {transaction.pending && "Pending - "}
+                {transaction.description}
+              </div>
+              <div className="text-sm text-gray-400">
+                {transaction.authorizedUser &&
+                  `${transaction.authorizedUser} - `}
+                {formattedDate}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="text-right flex items-center">
-          <div>
-            <div className="font-semibold text-black text-base">
-              {amountDisplay}
+          <div className="text-right flex items-center">
+            <div>
+              <div className="font-semibold text-black text-base">
+                {amountDisplay}
+              </div>
+              <div className="text-sm text-gray-400">3%</div>
             </div>
-            <div className="text-sm text-gray-400">3%</div>
+            <FontAwesomeIcon
+              icon={faChevronRight}
+              className="w-5 h-5 text-gray-300 ml-2"
+            />
           </div>
-          <FontAwesomeIcon
-            icon={faChevronRight}
-            className="w-5 h-5 text-gray-300 ml-2"
-          />
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
+
+export const TransactionItem = memo(TransactionItemComponent);
