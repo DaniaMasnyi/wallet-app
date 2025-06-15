@@ -1,0 +1,98 @@
+{
+  "cardBalance": 17.3,
+  "transactions": [
+    {
+      "id": "1",
+      "type": "Credit",
+      "amount": 14.06,
+      "name": "Apple",
+      "description": "Card Number Used",
+      "date": "2024-12-19",
+      "pending": true,
+      "authorizedUser": "Diana",
+      "icon": "apple"
+    },
+    {
+      "id": "2",
+      "type": "Credit",
+      "amount": 174.0,
+      "name": "Amazon",
+      "description": "Online Purchase",
+      "date": "2024-12-17",
+      "icon": "amazon"
+    },
+    {
+      "id": "3",
+      "type": "Credit",
+      "amount": 3.24,
+      "name": "Apple",
+      "description": "Card Number Used",
+      "date": "2024-12-17",
+      "authorizedUser": "Diana",
+      "icon": "apple"
+    },
+    {
+      "id": "4",
+      "type": "Credit",
+      "amount": 99.71,
+      "name": "Google",
+      "description": "Play Store Purchase",
+      "date": "2024-12-14",
+      "icon": "google"
+    },
+    {
+      "id": "5",
+      "type": "Credit",
+      "amount": 73.58,
+      "name": "Microsoft",
+      "description": "Office 365 Subscription",
+      "date": "2024-12-16",
+      "icon": "microsoft"
+    },
+    {
+      "id": "6",
+      "type": "Credit",
+      "amount": 21.61,
+      "name": "IKEA",
+      "description": "Round Rock, TX",
+      "date": "2022-10-01",
+      "icon": "ikea"
+    },
+    {
+      "id": "7",
+      "type": "Credit",
+      "amount": 73.58,
+      "name": "Target",
+      "description": "Cedar Park, TX",
+      "date": "2022-10-02",
+      "icon": "target"
+    },
+    {
+      "id": "8",
+      "type": "Credit",
+      "amount": 45.32,
+      "name": "Starbucks",
+      "description": "Austin, TX",
+      "date": "2024-12-15",
+      "icon": "starbucks"
+    },
+    {
+      "id": "9",
+      "type": "Credit",
+      "amount": 12.99,
+      "name": "Netflix",
+      "description": "Monthly Subscription",
+      "date": "2024-12-13",
+      "icon": "netflix"
+    },
+    {
+      "id": "10",
+      "type": "Credit",
+      "amount": 8.47,
+      "name": "McDonald's",
+      "description": "Drive Thru",
+      "date": "2024-12-12",
+      "icon": "mcdonalds"
+    }
+  ]
+}
